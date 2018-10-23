@@ -33,6 +33,7 @@ class RegisterViewController: UIViewController {
                 print(error)
             } else {
                 print("Registration Successful!")
+                self.performSegue(withIdentifier: "goToChat", sender: self)
             }
         }
         
