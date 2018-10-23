@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Flash Chat
 //
-//  Created by Angela Yu on 29/08/2015.
-//  Copyright (c) 2015 London App Brewery. All rights reserved.
+//  Created by ホアンゴックシン on 2018/10/23.
+//  Copyright © 2018 vnguider. All rights reserved.
 //
 
 import UIKit

@@ -2,8 +2,8 @@
 //  WelcomeViewController.swift
 //  Flash Chat
 //
-//  This is the welcome view controller - the first thign the user sees
-//
+//  Created by ホアンゴックシン on 2018/10/23.
+//  Copyright © 2018 vnguider. All rights reserved.
 
 import UIKit
 

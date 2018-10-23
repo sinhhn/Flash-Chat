@@ -2,11 +2,11 @@
 //  RegisterViewController.swift
 //  Flash Chat
 //
-//  This is the View Controller which registers new users with Firebase
+//  Created by ホアンゴックシン on 2018/10/23.
+//  Copyright © 2018 vnguider. All rights reserved.
 //
-
 import UIKit
-
+import Firebase
 
 class RegisterViewController: UIViewController {
 
@@ -28,16 +28,13 @@ class RegisterViewController: UIViewController {
 
   
     @IBAction func registerPressed(_ sender: AnyObject) {
-        
-
-        
-        //TODO: Set up a new user on our Firbase database
-        
-        
-
-        
+        Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
+            if error != nil {
+                print(error)
+            } else {
+                print("Registration Successful!")
+            }
+        }
         
     } 
-    
-    
 }
