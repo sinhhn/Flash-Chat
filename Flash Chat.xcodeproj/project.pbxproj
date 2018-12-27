@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3B9E2F0040279504D7D37BD8 /* Pods_Flash_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEE5E395D52F463678190FE /* Pods_Flash_Chat.framework */; };
 		5D088025217E1601000FE1F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D088024217E1601000FE1F9 /* GoogleService-Info.plist */; };
+		5DF2AC2721D37EC700D366E7 /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2AC2521D37EC700D366E7 /* NewTableViewCell.swift */; };
+		5DF2AC2821D37EC700D366E7 /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DF2AC2621D37EC700D366E7 /* NewTableViewCell.xib */; };
 		6321A9C31B94EBA10053D2E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6321A9C21B94EBA10053D2E7 /* Images.xcassets */; };
 		6321A9E21B94EBE70053D2E7 /* CustomMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6321A9DB1B94EBE70053D2E7 /* CustomMessageCell.swift */; };
 		6321A9E51B94EBE70053D2E7 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6321A9DE1B94EBE70053D2E7 /* MessageCell.xib */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		5A456662E9053E2276778E7C /* Pods-Flash Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flash Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flash Chat/Pods-Flash Chat.debug.xcconfig"; sourceTree = "<group>"; };
 		5D088024217E1601000FE1F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5DF2AC2521D37EC700D366E7 /* NewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
+		5DF2AC2621D37EC700D366E7 /* NewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewTableViewCell.xib; sourceTree = "<group>"; };
 		6321A9B61B94EBA10053D2E7 /* Flash Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flash Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6321A9BA1B94EBA10053D2E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6321A9C21B94EBA10053D2E7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			children = (
 				6321A9DB1B94EBE70053D2E7 /* CustomMessageCell.swift */,
 				6321A9DE1B94EBE70053D2E7 /* MessageCell.xib */,
+				5DF2AC2521D37EC700D366E7 /* NewTableViewCell.swift */,
+				5DF2AC2621D37EC700D366E7 /* NewTableViewCell.xib */,
 			);
 			name = "Custom Cell";
 			sourceTree = "<group>";
@@ -215,6 +221,7 @@
 			files = (
 				63E28B291B9A336600FBF6E0 /* Main.storyboard in Resources */,
 				6321A9C31B94EBA10053D2E7 /* Images.xcassets in Resources */,
+				5DF2AC2821D37EC700D366E7 /* NewTableViewCell.xib in Resources */,
 				5D088025217E1601000FE1F9 /* GoogleService-Info.plist in Resources */,
 				63EBB3051D98004B004175E5 /* LaunchScreen.storyboard in Resources */,
 				6321A9E51B94EBE70053D2E7 /* MessageCell.xib in Resources */,
@@ -291,6 +298,7 @@
 				63E28B321B9A337600FBF6E0 /* RegisterViewController.swift in Sources */,
 				63E28B311B9A337600FBF6E0 /* LogInViewController.swift in Sources */,
 				63E28B2F1B9A337600FBF6E0 /* AppDelegate.swift in Sources */,
+				5DF2AC2721D37EC700D366E7 /* NewTableViewCell.swift in Sources */,
 				63E28B301B9A337600FBF6E0 /* ChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

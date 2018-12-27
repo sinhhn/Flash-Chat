@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-class ChatViewController: UIViewController {
     
     // Declare instance variables here
 
@@ -26,7 +27,8 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         
         //TODO: Set yourself as the delegate and datasource here:
-        
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
         
         
         //TODO: Set yourself as the delegate of the text field here:
@@ -38,7 +40,7 @@ class ChatViewController: UIViewController {
         
 
         //TODO: Register your MessageCell.xib file here:
-
+        messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
         
     }
 
@@ -49,7 +51,14 @@ class ChatViewController: UIViewController {
     
     
     //TODO: Declare cellForRowAtIndexPath here:
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomMessageCell", for: indexPath) as! CustomMessageCell
+        return cell
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
     
     
     //TODO: Declare numberOfRowsInSection here:
@@ -107,7 +116,16 @@ class ChatViewController: UIViewController {
     @IBAction func logOutPressed(_ sender: AnyObject) {
         
         //TODO: Log out the user and send them back to WelcomeViewController
-        
+        do {
+            try Auth.auth().signOut()
+        }
+        catch {
+            print("error: these was a problem signing out")
+        }
+        guard ( navigationController?.popToRootViewController(animated: true) != nil) else {
+            print("No view controller to pop off")
+            return
+        }
         
     }
     
