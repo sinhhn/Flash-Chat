@@ -30,7 +30,7 @@ class RegisterViewController: UIViewController {
     @IBAction func registerPressed(_ sender: AnyObject) {
         Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
             if error != nil {
-                print(error)
+                print(error!)
             } else {
                 print("Registration Successful!")
                 self.performSegue(withIdentifier: "goToChat", sender: self)
