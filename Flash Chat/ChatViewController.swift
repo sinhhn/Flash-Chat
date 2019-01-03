@@ -8,12 +8,13 @@
 
 import UIKit
 import Firebase
+import ChameleonFramework
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     
     // Declare instance variables here
-
+    var messageArray: [Message] = [Message]()
     
     // We've pre-linked the IBOutlets
     @IBOutlet var heightConstraint: NSLayoutConstraint!
@@ -40,7 +41,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //TODO: Register your MessageCell.xib file here:
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
         configureTableView()
-        
+        retrieveMessages()
+        messageTableView.separatorStyle = .none
     }
 
     ///////////////////////////////////////////
@@ -52,14 +54,23 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //TODO: Declare cellForRowAtIndexPath here:
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
-        let messageArray = ["Nothing gonna change my love for you! Nothing gonna change my love for you!", "Second Message", "Third Message"]
-        cell.messageBody.text = messageArray[indexPath.row]
+        cell.messageBody.text = messageArray[indexPath.row].messageBody
+        cell.senderUsername.text = messageArray[indexPath.row].sender
+        cell.avatarImageView.image = UIImage(named: "egg")
+        if cell.senderUsername.text == Auth.auth().currentUser?.email as String! {
+            // Messages we sent
+            cell.avatarImageView.backgroundColor = UIColor.flatMint()
+            cell.messageBackground.backgroundColor = UIColor.flatSkyBlue()
+        } else {
+            cell.avatarImageView.backgroundColor = UIColor.flatWatermelon()
+            cell.messageBackground.backgroundColor = UIColor.flatGray()
+        }
         return cell
     }
     
     //TODO: Declare numberOfRowsInSection here:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return messageArray.count
     }
     
     //TODO: Declare tableViewTapped here:
@@ -103,10 +114,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - Send & Recieve from Firebase
     
-    
-    
-    
-    
     @IBAction func sendPressed(_ sender: AnyObject) {
         
         messageTextfield.endEditing(true)
@@ -114,28 +121,33 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //TODO: Send the message to Firebase and save it in our database
         messageTextfield.isEnabled = false
         sendButton.isEnabled = false
-        let messageDatabase = Database.database().reference().child("Message")
+        let messageDatabase = Database.database().reference().child(Constants.DATABASE_NAME)
         let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextfield.text!]
-        messageDatabase.childByAutoId().setValue(messageDictionary) {
-            (error, reference) in
+        messageDatabase.childByAutoId().setValue(messageDictionary) { (error, reference) in
             if error != nil {
                 print(error!)
             } else {
-                print("Message saved successfully!")
+                self.messageTextfield.text = ""
                 self.messageTextfield.isEnabled = true
                 self.sendButton.isEnabled = true
-                self.messageTextfield.text = ""
             }
         }
         
     }
     
     //TODO: Create the retrieveMessages method here:
-    
-    
-
-    
-    
+    func retrieveMessages() {
+        let messageDatabase = Database.database().reference().child(Constants.DATABASE_NAME)
+        messageDatabase.observe(.childAdded, with: { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String, String>
+            let message = Message()
+            message.messageBody = snapshotValue["MessageBody"]!
+            message.sender = snapshotValue["Sender"]!
+            self.messageArray.append(message)
+            self.configureTableView()
+            self.messageTableView.reloadData()
+        })
+    }
     
     @IBAction func logOutPressed(_ sender: AnyObject) {
         
@@ -152,7 +164,4 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
-    
-
-
 }
