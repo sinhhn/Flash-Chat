@@ -60,12 +60,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5D7F438A21DE2A7C00CC2278 /* Util */ = {
+		5D7F438D21DE6B4500CC2278 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				5D7F438B21DE2A9C00CC2278 /* Constants.swift */,
 			);
-			path = Util;
+			name = Util;
 			sourceTree = "<group>";
 		};
 		6321A9AD1B94EBA10053D2E7 = {
@@ -89,7 +89,7 @@
 		6321A9B81B94EBA10053D2E7 /* Flash Chat */ = {
 			isa = PBXGroup;
 			children = (
-				5D7F438A21DE2A7C00CC2278 /* Util */,
+				5D7F438D21DE6B4500CC2278 /* Util */,
 				6321A9EE1B94EC360053D2E7 /* Model */,
 				6321A9EB1B94EC170053D2E7 /* View */,
 				6321A9EA1B94EC0A0053D2E7 /* Controller */,
